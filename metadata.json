@@ -1,0 +1,7 @@
+{
+  "name": "School Finance",
+  "description": "School financial management system for fee payments, school expenses, receipts, and monthly reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

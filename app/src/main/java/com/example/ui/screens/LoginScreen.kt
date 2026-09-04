@@ -74,26 +74,18 @@ import com.example.ui.util.Translations
 fun LoginScreen(
     state: UiState,
     onLogin: (identifier: String, pass: String) -> Unit,
-    onSignUp: (email: String, pass: String, fullName: String, phone: String?) -> Unit,
-    onResendConfirmation: (email: String) -> Unit,
+    onSignUp: ((email: String, pass: String, fullName: String, phone: String?) -> Unit)? = null,
+    onResendConfirmation: ((email: String) -> Unit)? = null,
     onUpdateSupabaseConfig: (url: String, key: String) -> Unit,
     onCheckServer: () -> Unit,
     onClearMessages: () -> Unit
 ) {
     val lang = state.language
-    var selectedTab by remember { mutableIntStateOf(0) } // 0 = Login, 1 = Sign Up
 
-    // Login inputs
-    var loginIdentifier by remember { mutableStateOf("shahriar.hossain894@gmail.com") }
+    // Login inputs (defaults to empty)
+    var loginIdentifier by remember { mutableStateOf("") }
     var loginPassword by remember { mutableStateOf("") }
     var loginPasswordVisible by remember { mutableStateOf(false) }
-
-    // Signup inputs
-    var signupName by remember { mutableStateOf("") }
-    var signupEmail by remember { mutableStateOf("") }
-    var signupPassword by remember { mutableStateOf("") }
-    var signupPhone by remember { mutableStateOf("") }
-    var signupPasswordVisible by remember { mutableStateOf(false) }
 
     // Server config dialog state
     var showConfigDialog by remember { mutableStateOf(false) }
